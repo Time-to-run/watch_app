@@ -1,11 +1,12 @@
-
 import SwiftUI
 
 struct StopandRunView: View {
-    @State private var distance: String = "3:42" // 거리 데이터
+    @State private var distance: String = "0:54" // 거리 데이터
     @State private var runningTime: TimeInterval = 0 // 뛴 시간 (초 단위)
     @State private var timer: Timer? = nil // 타이머 객체
     @State private var isRunning: Bool = true // 기본적으로 재생 상태
+    @State private var showResultView: Bool = false // RunningResultView 표시 여부
+
     
 
     private let timeFormatter: DateComponentsFormatter = {
@@ -19,10 +20,10 @@ struct StopandRunView: View {
     var body: some View {
         VStack {
             // 상단에 달린 시간 표시
-            Text("Time: \(timeFormatter.string(from: runningTime) ?? "00:00:00")")
+            Text("Time: \(timeFormatter.string(from: runningTime) ?? "0:00:00")")
                 .font(.system(size: 17))
                 .foregroundColor(.white)
-                .padding(.top, 10)
+                .padding(.top, 20)
                 .padding()
 
             Text(distance)
@@ -48,7 +49,7 @@ struct StopandRunView: View {
                         .frame(width: 20, height: 20)
                 }
                 .onTapGesture {
-                    resetValues()
+                    showResultView = true // 기록 데이터 화면 전환
                 }
 
                 Spacer()
@@ -90,6 +91,13 @@ struct StopandRunView: View {
         .onAppear {
             startTimer() // 화면이 나타날 때 타이머 시작
         }
+        .fullScreenCover(isPresented: $showResultView) {
+            // RunningResultView로 데이터 전달
+            RunningResultView(
+                distance: distance,
+                runningTime: timeFormatter.string(from: runningTime) ?? "0:00:00"
+            )
+        }
     }
 
     // 타이머 시작
@@ -113,15 +121,6 @@ struct StopandRunView: View {
         isRunning.toggle()
     }
 
-    // 초기화
-    func resetValues() {
-        timer?.invalidate()
-        timer = nil
-        isRunning = false
-        runningTime = 0
-        distance = "0:00"
-        print("초기화 완료")
-    }
 }
 
 // 커스텀 삼각형 도형
@@ -141,4 +140,5 @@ struct Triangle: Shape {
 
 #Preview {
     StopandRunView()
+    
 }

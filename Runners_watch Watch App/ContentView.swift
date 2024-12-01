@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showStartView = false // 화면 전환 상태 관리
+    @State private var navigateToCountsView = false
 
     var body: some View {
         ZStack {

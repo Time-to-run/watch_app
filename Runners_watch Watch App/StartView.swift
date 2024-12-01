@@ -6,8 +6,7 @@ struct StartView: View {
     var body: some View {
         ZStack {
             // 배경색: 검정
-            Color.black
-                .ignoresSafeArea() // 전체 화면을 검정으로 채움
+            Color.black.ignoresSafeArea() // 전체 화면을 검정으로 채움
             
             // 주황색 원
             Circle()
