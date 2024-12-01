@@ -9,7 +9,7 @@ struct ContentView: View {
                 // Assets에 저장된 이미지 사용
                 Image("메인 이미지") // "메인 이미지"는 Assets에 추가된 이미지 이름
                     .resizable() // 크기 조정을 허용
-                    .frame(width: 210, height: 270) // 원하는 크기 지정
+                    .frame(width: 170, height: 230) // 원하는 크기 지정
                     .cornerRadius(15)
             }
             .onTapGesture {
