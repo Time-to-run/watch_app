@@ -12,7 +12,7 @@ struct StartView: View {
             // 주황색 원
             Circle()
                 .fill(Color("AccentColor")) // 원의 색상
-                .frame(width: 130, height: 130) // 원 크기
+                .frame(width: 120, height: 120) // 원 크기
             
             // 흰색 "Start" 텍스트 버튼
             Text("Start")
