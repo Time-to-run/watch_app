@@ -19,7 +19,7 @@ struct RunningResultView: View {
             // 러닝 데이터 표시
             VStack(alignment: .leading, spacing: 17) { // 좌측 정렬
                 HStack {
-                    Text("러닝 거리: ")
+                    Text("러닝 거리:")
                         .font(.system(size: 17, weight: .medium))
                         .foregroundColor(.white) // 텍스트 색상 흰색
                     Text("\(distance) km")
@@ -28,7 +28,7 @@ struct RunningResultView: View {
                 }
                 
                 HStack {
-                    Text("러닝시간: ")
+                    Text("러닝시간:")
                         .font(.system(size: 17, weight: .medium))
                         .foregroundColor(.white) // 텍스트 색상 흰색
                     Text("\(runningTime)")
@@ -37,10 +37,10 @@ struct RunningResultView: View {
                 }
                 
                 HStack {
-                    Text("평균심박수: ")
+                    Text("평균심박수:")
                         .font(.system(size: 17, weight: .medium))
                         .foregroundColor(.white) // 텍스트 색상 흰색
-                    Text("\(heartRate)")
+                    Text("\(heartRate)BPM")
                         .font(.system(size: 17, weight: .medium))
                         .foregroundColor(Color("AccentColor")) // 숫자 색상 그대로 유지
                 }
@@ -55,7 +55,7 @@ struct RunningResultView: View {
         .fullScreenCover(isPresented: $navigateToCountsView) {
             ContentView()
         }
-        .navigationBarBackButtonHidden(true)
+    
     }
 }
 
